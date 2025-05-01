@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  
+<head>
+  <meta charset="UTF-8">
+  <title>YoSinTV MPD Player</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cr7tv.github.io/mpd/mpd.js"></script>
+ <!-- https://yosintv2.github.io/tv/mpd.js -->
+  <style>
+    body {
+      margin: 0px;
+    }
+
+    .jwplayer {
+      position: absolute !important;
+    }
+
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="jwplayerDiv"></div>
+  <script type="text/javascript">
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        file: params.get('file') || " https://live-oneapp-prd-news.akamaized.net/Content/CMAF_OL1-CTR-4s/Live/channel(universo-east)/master.mpd ",
+        keyId: params.get('keyId') || " a42669eafed7349499aab7df588b3ccf",
+        key: params.get('key') || " 0fbff143ebd097060a377e4ade033288 "
+      };
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const { file, keyId, key } = getQueryParams();
+
+      jwplayer("jwplayerDiv").setup({
+        file: file,
+        position: 'bottom',
+        autostart: true,
+        stretching: "",
+        width: "100%",
+        type: "dash",
+        drm: {
+          clearkey: {
+            keyId: keyId,
+            key: key
+          }
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>
