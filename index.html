@@ -96,7 +96,7 @@
         .match-vs {
             font-size: 1.25rem;
             font-weight: bold;
-            color: #555;
+            color: #000;
             margin: 0;
         }
         .match-status {
@@ -106,7 +106,7 @@
             display: inline-block;
         }
         .match-status-countdown {
-            color: #007bff;
+            color: #ff0012;
         }
         .match-status-live {
             background: #dc3545;
@@ -445,7 +445,7 @@ function rdmode(){localStorage.setItem("mode","rdmode"===localStorage.getItem("m
                     const totalHours = Math.floor(diff / (1000 * 60 * 60));
                     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
                     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-                    element.textContent = `${totalHours}h ${minutes}m ${seconds}s`;
+                    element.textContent = `${totalHours}h ${minutes}m`;
                     element.classList.remove('match-status-live', 'match-status-over');
                     element.classList.add('match-status-countdown');
                 }
